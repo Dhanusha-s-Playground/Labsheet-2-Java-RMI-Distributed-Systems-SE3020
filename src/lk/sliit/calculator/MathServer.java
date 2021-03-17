@@ -75,33 +75,31 @@ public class MathServer extends UnicastRemoteObject implements MathService {
      * this method will increase the client count by one
      * */
     public int increaseClientCount() {
-        incClientCount();
-        return clientCount;
+        return (clientCount>=0)?++clientCount:clientCount;
     }
 
     /**
      * this method will decrease the client count by one
      * */
     public int decreaseClientCount() {
-        decClientCount();
-        return clientCount;
+        return (clientCount>0)?--clientCount:clientCount;
     }
 
-    /**
-     *  increases client count by one
-     *  */
-    private synchronized static void incClientCount(){
-        if (clientCount>=0){
-            ++clientCount;
-        }
-    }
-
-    /**
-     *  decreases client count by one
-     *  */
-    private synchronized static void decClientCount(){
-        if (clientCount>0){
-            --clientCount;
-        }
-    }
+//    /**
+//     *  increases client count by one
+//     *  */
+//    private synchronized static void incClientCount(){
+//        if (clientCount>=0){
+//            ++clientCount;
+//        }
+//    }
+//
+//    /**
+//     *  decreases client count by one
+//     *  */
+//    private synchronized static void decClientCount(){
+//        if (clientCount>0){
+//            --clientCount;
+//        }
+//    }
 }
