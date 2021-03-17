@@ -12,10 +12,10 @@ Make sure the increment client count function is thread safe.
 
 I used one method to increase the client count when new client comes into action,
 and I used another method for the decrement. 
-These two methods responsible to change a static variable.
+These two methods responsible to change a variable.
 
 ```java
-private static int clientCount = 0;
+private int clientCount = 0;
 ```
 
 We can 'synchronized' these two methods, 
@@ -25,7 +25,7 @@ thus one thread can access the variable at a time.
     /**
      *  increases client count by one
      *  */
-    private synchronized static void incClientCount(){
+    private synchronized void incClientCount(){
         if (clientCount>=0){
             ++clientCount;
         }
@@ -34,7 +34,7 @@ thus one thread can access the variable at a time.
     /**
      *  decreases client count by one
      *  */
-    private synchronized static void decClientCount(){
+    private synchronized void decClientCount(){
         if (clientCount>0){
             --clientCount;
         }
